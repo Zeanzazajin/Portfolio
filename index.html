@@ -1,0 +1,1296 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Phooritat Thanawattako | My Portfolio</title>
+    <meta name="description" content="Portfolio ของนายภูริทัต ธนะวัฒโก นักศึกษาเทคโนโลยีธุรกิจดิจิทัล">
+
+    <style>
+        /* =====================================
+           1. สีและค่าพื้นฐานของเว็บไซต์
+           เปลี่ยนสีได้จากตัวแปรเหล่านี้
+        ===================================== */
+        :root {
+            --primary: #2789e8;
+            --primary-dark: #1263ad;
+            --blue-light: #eaf5ff;
+            --background: #f7fbff;
+            --white: #ffffff;
+            --text: #24364b;
+            --muted: #687b91;
+            --border: #dceaf7;
+            --shadow: 0 12px 35px rgba(39, 137, 232, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 85px;
+        }
+
+        body {
+            font-family: "Segoe UI", Tahoma, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        .container {
+            width: min(1120px, 90%);
+            margin: auto;
+        }
+
+        .section {
+            padding: 85px 0;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .eyebrow {
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-top: 8px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            margin-top: 8px;
+        }
+
+        /* =====================================
+           2. Navigation Bar
+        ===================================== */
+        .navbar {
+            position: fixed;
+            inset: 0 0 auto 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            min-height: 74px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            color: var(--primary-dark);
+            font-size: 1.3rem;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: var(--text);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 23px;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.92rem;
+            transition: color 0.25s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .menu-toggle {
+            display: none;
+            border: none;
+            background: var(--blue-light);
+            color: var(--primary-dark);
+            border-radius: 10px;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        /* =====================================
+           3. Hero Section
+        ===================================== */
+        .hero {
+            min-height: 100vh;
+            padding: 125px 0 70px;
+            display: flex;
+            align-items: center;
+            background:
+                radial-gradient(circle at 85% 20%, #d5ecff, transparent 30%),
+                radial-gradient(circle at 10% 85%, #e8f4ff, transparent 28%),
+                var(--white);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: center;
+            gap: 55px;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            padding: 6px 15px;
+            background: var(--blue-light);
+            border: 1px solid var(--border);
+            color: var(--primary-dark);
+            border-radius: 30px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            line-height: 1.3;
+            overflow-wrap: anywhere;
+        }
+
+        .highlight {
+            display: block;
+            color: var(--primary);
+        }
+
+        .hero h2 {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            font-weight: 500;
+            color: var(--muted);
+            margin-top: 15px;
+            overflow-wrap: anywhere;
+        }
+
+        .hero-description {
+            color: var(--muted);
+            margin: 22px 0 28px;
+            max-width: 560px;
+        }
+
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 13px;
+        }
+
+        .btn {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            padding: 11px 21px;
+            border-radius: 12px;
+            font-weight: 700;
+            border: 1px solid var(--primary);
+            transition: 0.25s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary {
+            color: var(--white);
+            background: var(--primary);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn-outline {
+            color: var(--primary-dark);
+            background: var(--white);
+        }
+
+        /* =====================================
+           4. รูปถ่าย
+           ให้นำรูปจริงมาใส่ในโฟลเดอร์ images
+           แล้วตั้งชื่อไฟล์ว่า profile.jpg
+        ===================================== */
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+        }
+
+        .photo-frame {
+            width: min(350px, 100%);
+            aspect-ratio: 4 / 5;
+            padding: 11px;
+            border-radius: 32px;
+            background: linear-gradient(145deg, #69b5ff, #d9efff);
+            box-shadow: 0 25px 60px rgba(39, 137, 232, 0.18);
+            position: relative;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            border-radius: 24px;
+            background: var(--white);
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border: 2px dashed #9cccf5;
+            border-radius: 24px;
+            background: var(--white);
+            padding: 20px;
+            color: var(--muted);
+        }
+
+        .photo-placeholder .photo-icon {
+            font-size: 4rem;
+            margin-bottom: 12px;
+        }
+
+        .photo-placeholder strong {
+            color: var(--text);
+        }
+
+        .photo-placeholder p {
+            font-size: 0.85rem;
+            margin-top: 8px;
+        }
+
+        .floating-label {
+            position: absolute;
+            right: -18px;
+            bottom: 30px;
+            background: var(--white);
+            padding: 11px 16px;
+            border-radius: 13px;
+            box-shadow: var(--shadow);
+            color: var(--primary-dark);
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        /* =====================================
+           5. About Me
+        ===================================== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 42px;
+            align-items: center;
+        }
+
+        .about-card {
+            padding: 35px 25px;
+            background: var(--blue-light);
+            border: 1px solid var(--border);
+            border-radius: 25px;
+            text-align: center;
+        }
+
+        .about-symbol {
+            width: 105px;
+            height: 105px;
+            margin: 0 auto 20px;
+            display: grid;
+            place-items: center;
+            border-radius: 28px;
+            background: var(--white);
+            font-size: 3rem;
+            box-shadow: var(--shadow);
+        }
+
+        .about-card h3 {
+            font-size: 1.2rem;
+        }
+
+        .about-card p,
+        .about-content p {
+            color: var(--muted);
+        }
+
+        .about-content h3 {
+            font-size: 1.65rem;
+            margin-bottom: 14px;
+        }
+
+        .about-content p {
+            margin-bottom: 14px;
+        }
+
+        .info-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 22px;
+        }
+
+        .info-item {
+            padding: 13px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: var(--white);
+            overflow-wrap: anywhere;
+        }
+
+        .info-item small {
+            display: block;
+            color: var(--muted);
+        }
+
+        /* =====================================
+           6. Education Timeline
+        ===================================== */
+        .education {
+            background: var(--white);
+        }
+
+        .timeline {
+            max-width: 780px;
+            margin: auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            top: 12px;
+            bottom: 10px;
+            left: 18px;
+            width: 3px;
+            background: #d0e8ff;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 0 0 28px 58px;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 6px;
+            top: 7px;
+            width: 27px;
+            height: 27px;
+            border: 5px solid #d0e8ff;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+
+        .timeline-card {
+            padding: 23px;
+            border: 1px solid var(--border);
+            border-radius: 17px;
+            background: var(--background);
+            transition: 0.25s;
+        }
+
+        .timeline-card:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow);
+        }
+
+        .timeline-card .level {
+            color: var(--primary-dark);
+            font-size: 0.85rem;
+            font-weight: 800;
+        }
+
+        .timeline-card h3 {
+            margin: 5px 0 8px;
+            font-size: 1.12rem;
+        }
+
+        .timeline-card p {
+            color: var(--muted);
+            overflow-wrap: anywhere;
+        }
+
+        /* =====================================
+           7. Skills
+        ===================================== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .skill-card {
+            padding: 26px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            transition: 0.25s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow);
+        }
+
+        .skill-icon {
+            width: 55px;
+            height: 55px;
+            display: grid;
+            place-items: center;
+            margin-bottom: 16px;
+            border-radius: 15px;
+            background: var(--blue-light);
+            font-size: 1.6rem;
+        }
+
+        .skill-card h3 {
+            margin-bottom: 8px;
+        }
+
+        .skill-card p {
+            color: var(--muted);
+            font-size: 0.94rem;
+        }
+
+        .skill-level {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 4px 11px;
+            border-radius: 20px;
+            color: var(--primary-dark);
+            background: var(--blue-light);
+            font-size: 0.82rem;
+            font-weight: 700;
+        }
+
+        /* =====================================
+           8. Projects
+        ===================================== */
+        .projects {
+            background: var(--white);
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 600px);
+            justify-content: center;
+        }
+
+        .project-card {
+            overflow: hidden;
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            background: var(--white);
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow);
+        }
+
+        .project-cover {
+            min-height: 210px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, #eaf5ff, #d3eaff);
+            color: var(--primary-dark);
+            font-size: 4.5rem;
+        }
+
+        .project-body {
+            padding: 27px;
+        }
+
+        .project-tag {
+            display: inline-block;
+            padding: 4px 11px;
+            border-radius: 20px;
+            background: var(--blue-light);
+            color: var(--primary-dark);
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .project-body h3 {
+            margin: 13px 0 9px;
+            font-size: 1.3rem;
+        }
+
+        .project-body p {
+            color: var(--muted);
+        }
+
+        .tool-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-top: 18px;
+        }
+
+        .tool-tags span {
+            padding: 5px 12px;
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--primary-dark);
+            font-size: 0.85rem;
+        }
+
+        /* =====================================
+           9. Contact
+        ===================================== */
+        .contact-card {
+            max-width: 760px;
+            margin: auto;
+            padding: 40px 25px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .contact-card p {
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+        .email-link {
+            display: inline-block;
+            padding: 12px 19px;
+            border-radius: 12px;
+            background: var(--blue-light);
+            color: var(--primary-dark);
+            font-weight: 700;
+            overflow-wrap: anywhere;
+            transition: 0.25s;
+        }
+
+        .email-link:hover {
+            background: #d8ebff;
+            transform: translateY(-2px);
+        }
+
+        /* =====================================
+           10. Footer และปุ่มกลับด้านบน
+        ===================================== */
+        footer {
+            padding: 24px 0;
+            background: #edf6ff;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .back-to-top {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 45px;
+            height: 45px;
+            border: 0;
+            border-radius: 14px;
+            background: var(--primary);
+            color: var(--white);
+            font-size: 1.3rem;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: 0.25s;
+            z-index: 900;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* =====================================
+           11. Scroll Animation
+        ===================================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* =====================================
+           12. Responsive: Tablet และ Mobile
+        ===================================== */
+        @media (max-width: 850px) {
+            .nav-links {
+                gap: 13px;
+            }
+
+            .nav-links a {
+                font-size: 0.82rem;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1.1fr 0.9fr;
+                gap: 25px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-card {
+                max-width: 430px;
+                width: 100%;
+                margin: auto;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 650px) {
+            .section {
+                padding: 65px 0;
+            }
+
+            .nav-inner {
+                min-height: 68px;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 68px;
+                left: 0;
+                right: 0;
+                padding: 15px 5% 22px;
+                background: var(--white);
+                border-bottom: 1px solid var(--border);
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                box-shadow: var(--shadow);
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 9px 0;
+                font-size: 1rem;
+            }
+
+            .hero {
+                min-height: auto;
+                padding-top: 115px;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-content {
+                text-align: center;
+            }
+
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .button-group {
+                justify-content: center;
+            }
+
+            .photo-frame {
+                width: min(300px, 85%);
+            }
+
+            .floating-label {
+                right: -12px;
+            }
+
+            .info-list,
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 12px;
+            }
+
+            .timeline-item {
+                padding-left: 44px;
+            }
+
+            .timeline-dot {
+                left: 0;
+            }
+
+            .timeline-card {
+                padding: 18px;
+            }
+
+            .contact-card {
+                padding: 28px 18px;
+            }
+        }
+
+        /* ลดภาพเคลื่อนไหวตามการตั้งค่าของอุปกรณ์ */
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *, *::before, *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="navbar">
+        <div class="container nav-inner">
+            <a href="#home" class="logo">P<span>.Portfolio</span></a>
+
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="เปิดหรือปิดเมนู"
+                aria-expanded="false"
+                aria-controls="navLinks">
+                ☰ เมนู
+            </button>
+
+            <nav aria-label="เมนูหลัก">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home" class="active">หน้าแรก</a></li>
+                    <li><a href="#about">เกี่ยวกับฉัน</a></li>
+                    <li><a href="#education">การศึกษา</a></li>
+                    <li><a href="#skills">ทักษะ</a></li>
+                    <li><a href="#projects">ผลงาน</a></li>
+                    <li><a href="#contact">ติดต่อ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- SECTION 1: หน้าแรก -->
+        <section class="hero" id="home">
+            <div class="container hero-grid">
+
+                <div class="hero-content reveal">
+                    <span class="hero-tag">MY PERSONAL PORTFOLIO</span>
+
+                    <h1>
+                        สวัสดีครับ ผมชื่อ
+                        <span class="highlight">ภูริทัต ธนะวัฒโก</span>
+                    </h1>
+
+                    <h2>Mr. Phooritat Thanawattako</h2>
+
+                    <p class="hero-description">
+                        นักศึกษาระดับปริญญาตรี สาขาเทคโนโลยีธุรกิจดิจิทัล
+                        วิทยาลัยอาชีวศึกษาชลบุรี
+                        สนใจการพัฒนาเว็บไซต์ การจัดการข้อมูล
+                        และการเรียนรู้เทคโนโลยีใหม่ ๆ
+                    </p>
+
+                    <div class="button-group">
+                        <a href="#projects" class="btn btn-primary">
+                            ดูผลงานของฉัน ↗
+                        </a>
+
+                        <a href="#about" class="btn btn-outline">
+                            รู้จักฉันเพิ่มเติม
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-visual reveal">
+                    <div class="photo-frame">
+
+                        <!--
+                            วิธีใส่รูปจริง:
+                            1. สร้างโฟลเดอร์ images ในโฟลเดอร์เว็บไซต์
+                            2. ใส่รูปของคุณ ตั้งชื่อ profile.jpg
+                            3. ลบ div class="photo-placeholder" ทั้งก้อน
+                            4. นำโค้ดนี้มาใส่แทน:
+
+                            <img src="images/profile.jpg"
+                                 alt="รูปถ่ายของภูริทัต ธนะวัฒโก"
+                                 class="profile-image">
+                        -->
+
+                        <div class="photo-placeholder">
+                            <div class="photo-icon">📷</div>
+                            <strong>รูปถ่ายของฉัน</strong>
+                            <p>ใส่รูปจริงของคุณได้ในส่วนนี้</p>
+                        </div>
+
+                    </div>
+
+                    <div class="floating-label">
+                        Web Developer
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 2: เกี่ยวกับฉัน -->
+        <section class="section" id="about">
+            <div class="container">
+
+                <div class="section-heading reveal">
+                    <span class="eyebrow">About Me</span>
+                    <h2>เกี่ยวกับฉัน</h2>
+                    <p>ข้อมูลส่วนตัวและความสนใจด้านเทคโนโลยี</p>
+                </div>
+
+                <div class="about-grid">
+
+                    <div class="about-card reveal">
+                        <div class="about-symbol">👨‍💻</div>
+                        <h3>Digital Business Technology</h3>
+                        <p>เทคโนโลยีธุรกิจดิจิทัล</p>
+                    </div>
+
+                    <div class="about-content reveal">
+                        <h3>เรียนรู้ พัฒนา และสร้างสรรค์</h3>
+
+                        <p>
+                            ผมชื่อ นายภูริทัต ธนะวัฒโก
+                            กำลังศึกษาในสาขาเทคโนโลยีธุรกิจดิจิทัล
+                            ที่วิทยาลัยอาชีวศึกษาชลบุรี
+                        </p>
+
+                        <p>
+                            ผมสนใจการพัฒนาเว็บไซต์และเทคโนโลยี
+                            รวมถึงการใช้ Microsoft Power BI และ Excel
+                            เพื่อจัดการและนำเสนอข้อมูล
+                        </p>
+
+                        <div class="info-list">
+                            <div class="info-item">
+                                <small>ชื่อภาษาไทย</small>
+                                <strong>นายภูริทัต ธนะวัฒโก</strong>
+                            </div>
+
+                            <div class="info-item">
+                                <small>ชื่อภาษาอังกฤษ</small>
+                                <strong>Mr. Phooritat Thanawattako</strong>
+                            </div>
+
+                            <div class="info-item">
+                                <small>สถานศึกษา</small>
+                                <strong>วิทยาลัยอาชีวศึกษาชลบุรี</strong>
+                            </div>
+
+                            <div class="info-item">
+                                <small>ระดับการศึกษา</small>
+                                <strong>ปริญญาตรี — กำลังศึกษา</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: ประวัติการศึกษา -->
+        <section class="section education" id="education">
+            <div class="container">
+
+                <div class="section-heading reveal">
+                    <span class="eyebrow">Education</span>
+                    <h2>ประวัติการศึกษา</h2>
+                    <p>เส้นทางการศึกษาของฉัน</p>
+                </div>
+
+                <div class="timeline">
+
+                    <article class="timeline-item reveal">
+                        <span class="timeline-dot"></span>
+
+                        <div class="timeline-card">
+                            <span class="level">
+                                มัธยมศึกษาตอนต้น
+                            </span>
+
+                            <h3>โรงเรียนเทศบาลวัดโพธิ์</h3>
+
+                            <p>ปีที่เข้าเรียน–จบ: พ.ศ. 2560–2563</p>
+                        </div>
+                    </article>
+
+                    <article class="timeline-item reveal">
+                        <span class="timeline-dot"></span>
+
+                        <div class="timeline-card">
+                            <span class="level">
+                                มัธยมศึกษาตอนปลาย
+                            </span>
+
+                            <h3>โรงเรียนเมรี่อินมาคุเลตคอนแวนต์</h3>
+
+                            <p>ปีที่เข้าเรียน–จบ: พ.ศ. 2563–2566</p>
+                        </div>
+                    </article>
+
+                    <article class="timeline-item reveal">
+                        <span class="timeline-dot"></span>
+
+                        <div class="timeline-card">
+                            <span class="level">
+                                ระดับปริญญาตรี
+                            </span>
+
+                            <h3>วิทยาลัยอาชีวศึกษาชลบุรี</h3>
+
+                            <p>สาขาเทคโนโลยีธุรกิจดิจิทัล</p>
+                            <p>ปีที่เข้าเรียน: พ.ศ. 2569</p>
+                            <p>สถานะ: กำลังศึกษา</p>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: ทักษะ -->
+        <section class="section" id="skills">
+            <div class="container">
+
+                <div class="section-heading reveal">
+                    <span class="eyebrow">My Skills</span>
+                    <h2>ทักษะของฉัน</h2>
+                    <p>ทักษะที่มีและความสนใจในการพัฒนา</p>
+                </div>
+
+                <div class="skills-grid">
+
+                    <article class="skill-card reveal">
+                        <div class="skill-icon">📊</div>
+                        <h3>Microsoft Power BI</h3>
+                        <p>
+                            เครื่องมือสำหรับจัดการข้อมูล
+                            และนำเสนอข้อมูลในรูปแบบรายงานและภาพประกอบข้อมูล
+                        </p>
+                        <span class="skill-level">ระดับเริ่มต้น</span>
+                    </article>
+
+                    <article class="skill-card reveal">
+                        <div class="skill-icon">📈</div>
+                        <h3>Microsoft Excel</h3>
+                        <p>
+                            เครื่องมือสำหรับจัดเก็บข้อมูล
+                            และทำงานกับตารางข้อมูล
+                        </p>
+                        <span class="skill-level">ระดับเริ่มต้น</span>
+                    </article>
+
+                    <article class="skill-card reveal">
+                        <div class="skill-icon">💻</div>
+                        <h3>Web Development</h3>
+                        <p>
+                            สนใจการสร้างเว็บไซต์และการเรียนรู้
+                            เทคโนโลยีสำหรับพัฒนาเว็บไซต์
+                        </p>
+                        <span class="skill-level">กำลังพัฒนา</span>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: ผลงาน -->
+        <section class="section projects" id="projects">
+            <div class="container">
+
+                <div class="section-heading reveal">
+                    <span class="eyebrow">My Projects</span>
+                    <h2>ผลงานของฉัน</h2>
+                    <p>เครื่องมือที่เกี่ยวข้องกับงานด้านข้อมูล</p>
+                </div>
+
+                <div class="project-grid">
+
+                    <article class="project-card reveal">
+                        <div class="project-cover">📊</div>
+
+                        <div class="project-body">
+                            <span class="project-tag">
+                                Data & Analytics
+                            </span>
+
+                            <h3>ผลงานด้าน Power BI และ Excel</h3>
+
+                            <p>
+                                นำเสนอความสนใจและทักษะในการใช้
+                                Microsoft Power BI และ Microsoft Excel
+                                ซึ่งเป็นเครื่องมือสำหรับการจัดการข้อมูล
+                                และการนำเสนอข้อมูล
+                            </p>
+
+                            <div class="tool-tags">
+                                <span>Microsoft Power BI</span>
+                                <span>Microsoft Excel</span>
+                            </div>
+
+                            <p style="margin-top: 18px; font-size: 0.85rem;">
+                                หมายเหตุ: เพิ่มภาพหน้าจอและรายละเอียด
+                                ของงานจริงได้เมื่อมีไฟล์ผลงานพร้อม
+                            </p>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: ติดต่อ -->
+        <section class="section" id="contact">
+            <div class="container">
+
+                <div class="section-heading reveal">
+                    <span class="eyebrow">Contact</span>
+                    <h2>ติดต่อฉัน</h2>
+                    <p>ช่องทางติดต่อสำหรับผู้ที่สนใจข้อมูลหรือผลงาน</p>
+                </div>
+
+                <div class="contact-card reveal">
+                    <h3>Contact Information</h3>
+
+                    <p>
+                        สามารถติดต่อผ่านอีเมลด้านล่างได้
+                    </p>
+
+                    <a class="email-link"
+                       href="mailto:zean250948@gmail.com">
+                        ✉ zean250948@gmail.com
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>
+                © <span id="currentYear"></span>
+                Phooritat Thanawattako
+            </p>
+
+            <p>Personal Portfolio | Digital Business Technology</p>
+        </div>
+    </footer>
+
+    <!-- ปุ่มกลับด้านบน -->
+    <button class="back-to-top"
+            id="backToTop"
+            aria-label="กลับไปด้านบน">
+        ↑
+    </button>
+
+    <script>
+        /* =====================================
+           1. เมนูสำหรับโทรศัพท์มือถือ
+        ===================================== */
+        const menuToggle = document.getElementById("menuToggle");
+        const navLinks = document.getElementById("navLinks");
+        const navItems = document.querySelectorAll(".nav-links a");
+
+        menuToggle.addEventListener("click", function () {
+            const isOpen = navLinks.classList.toggle("open");
+
+            menuToggle.setAttribute("aria-expanded", String(isOpen));
+            menuToggle.textContent = isOpen ? "✕ ปิดเมนู" : "☰ เมนู";
+        });
+
+        // ปิดเมนูเมื่อเลือกหัวข้อ
+        navItems.forEach(function (link) {
+            link.addEventListener("click", function () {
+                navLinks.classList.remove("open");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.textContent = "☰ เมนู";
+            });
+        });
+
+        /* =====================================
+           2. แสดง Animation เมื่อเลื่อนหน้า
+        ===================================== */
+        const revealElements = document.querySelectorAll(".reveal");
+
+        if ("IntersectionObserver" in window) {
+            const revealObserver = new IntersectionObserver(
+                function (entries, observer) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("visible");
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                {
+                    threshold: 0.12
+                }
+            );
+
+            revealElements.forEach(function (element) {
+                revealObserver.observe(element);
+            });
+        } else {
+            // แสดงเนื้อหาทันทีในเบราว์เซอร์ที่ไม่รองรับ
+            revealElements.forEach(function (element) {
+                element.classList.add("visible");
+            });
+        }
+
+        /* =====================================
+           3. ปุ่มกลับด้านบน
+        ===================================== */
+        const backToTop = document.getElementById("backToTop");
+
+        window.addEventListener("scroll", function () {
+            if (window.scrollY > 400) {
+                backToTop.classList.add("show");
+            } else {
+                backToTop.classList.remove("show");
+            }
+        });
+
+        backToTop.addEventListener("click", function () {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+
+        /* =====================================
+           4. ไฮไลต์เมนูตามส่วนที่กำลังอ่าน
+        ===================================== */
+        const sections = document.querySelectorAll("main section[id]");
+
+        if ("IntersectionObserver" in window) {
+            const sectionObserver = new IntersectionObserver(
+                function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            navItems.forEach(function (link) {
+                                const isActive =
+                                    link.getAttribute("href") ===
+                                    "#" + entry.target.id;
+
+                                link.classList.toggle("active", isActive);
+                            });
+                        }
+                    });
+                },
+                {
+                    rootMargin: "-25% 0px -60% 0px"
+                }
+            );
+
+            sections.forEach(function (section) {
+                sectionObserver.observe(section);
+            });
+        }
+
+        /* =====================================
+           5. ปีปัจจุบันใน Footer
+        ===================================== */
+        document.getElementById("currentYear").textContent =
+            new Date().getFullYear();
+    </script>
+
+</body>
+</html>
+<img
+    src="images/profile.jpg"
+    alt="รูปถ่ายของภูริทัต ธนะวัฒโก"
+    class="profile-image"
+>
